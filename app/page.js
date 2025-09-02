@@ -20,20 +20,7 @@ import { useEffect } from "react";
 
 
 const HomePage = () => {
-// const fadeSlideUp = {
-//   hidden: { opacity: 0, y: 50 },
-//   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-// };
 
-// const fadeSlideLeftDesktop = {
-//   hidden: { opacity: 0, x: -100 },
-//   visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-// };
-
-// const fadeSlideRightDesktop = {
-//   hidden: { opacity: 0, x: 100 },
-//   visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
-// };
   const nameRef = useRef(null);
   const textRef = useRef(null);
   const imageRef = useRef(null);

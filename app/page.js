@@ -155,7 +155,7 @@ const HomePage = () => {
   return (
     <div className="bg-white">
       {/* Top Navbar */}
-      <nav className="bg-gray-50 shadow-md font-serif top-0">
+      <nav className="bg-white shadow-md font-serif top-0">
         <div className="flex items-center justify-between px-6 py-3">
           {/* Logo (Mobile only) */}
           <div className="md:hidden">

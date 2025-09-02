@@ -8,42 +8,86 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
-import { ScrollTrigger, ScrollToPlugin } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { RxHamburgerMenu } from "react-icons/rx";
 import "animate.css";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+
+
 const HomePage = () => {
-  const textRef = useRef(".name");
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+// const fadeSlideUp = {
+//   hidden: { opacity: 0, y: 50 },
+//   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+// };
 
-    const el = textRef.current; // store reference once
-    const split = new SplitText(el, {
-      type: "chars, words",
-      charsClass: "char",
-    });
+// const fadeSlideLeftDesktop = {
+//   hidden: { opacity: 0, x: -100 },
+//   visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+// };
 
-    let tl = gsap.timeline();
+// const fadeSlideRightDesktop = {
+//   hidden: { opacity: 0, x: 100 },
+//   visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+// };
+  const nameRef = useRef(null);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
 
-    tl.from(split.chars, {
-      opacity: 0,
-      y: 50,
-      rotationX: 90,
-      transformOrigin: "0% 50% -50",
-      ease: "back.out(1.7)",
-      stagger: 0.05,
-      duration: 1.5,
-      onComplete: () => {
-        split.revert();
-        if (el instanceof HTMLElement) {
-          el.removeAttribute("aria-hidden");
-        }
-      },
-    });
-    //Underline Movement
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    // Animate Hero Heading
+    if (nameRef.current) {
+      const split = new SplitText(nameRef.current, {
+        type: "chars, words",
+        charsClass: "char",
+      });
+
+      gsap.from(split.chars, {
+        opacity: 0,
+        y: 50,
+        rotationX: 90,
+        transformOrigin: "0% 50% -50",
+        ease: "back.out(1.7)",
+        stagger: 0.05,
+        duration: 1.5,
+        onComplete: () => split.revert(),
+      });
+    }
+
+    // Animate Upcoming Event Text
+    if (textRef.current) {
+      // Slide in from left
+      gsap.from(textRef.current, {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 80%",
+        },
+      });
+    }
+
+    // Animate Event Image
+    if (imageRef.current) {
+      gsap.from(imageRef.current, {
+        x: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 80%",
+        },
+      });
+    }
 
     //Split text
     const about = [".about"];
@@ -186,7 +230,10 @@ const HomePage = () => {
           </div>
           {/* Title */}
           <div className="pl-6 sm:pl-16 md:pl-20 h-[40%] flex items-center">
-            <span className="font-semibold text-3xl sm:text-4xl md:text-4xl lg:text-6xl leading-snug name">
+            <span
+              className="font-semibold text-3xl sm:text-4xl md:text-4xl lg:text-6xl leading-snug "
+              ref={nameRef}
+            >
               IEEE VSSUT STUDENT BRANCH
             </span>
           </div>
@@ -258,7 +305,7 @@ const HomePage = () => {
 
       {/* About Section */}
       <div className="flex flex-col px-4 sm:px-8 lg:px-20 mt-20">
-        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl text-[#00629B] aboutA">
+        <h2 className="text-center text-4xl sm:text-3xl md:text-5xl text-[#00629B] aboutA relative inline-block">
           About Us
         </h2>
 
@@ -282,7 +329,7 @@ const HomePage = () => {
 
       {/* Achievements Section */}
       <section className="py-15 " id="achievements">
-        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 achieve text-[#00629B]">
+        <h2 className="text-center text-4xl sm:text-3xl md:text-5xl mt-10 achieve text-[#00629B]">
           Achievements
         </h2>
         {/* Achievements Component with padding */}
@@ -293,12 +340,15 @@ const HomePage = () => {
       {/* Upcoming Events */}
       <section className="py-15 px-4 sm:px-8 lg:px-20" id="events">
         {/* Heading */}
-        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 text-[#00629B] upcoming">
+        <h2 className="text-center text-4xl sm:text-3xl md:text-5xl mt-10 text-[#00629B] upcoming">
           Upcoming Events
         </h2>
 
         {/* Event Content */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 md:mt-15 ">
+        <div
+          className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 md:mt-15 "
+          ref={textRef}
+        >
           {/* Optional Left Border */}
           <div className=" border-l-2  h-full"></div>
           {/* Left Side: Text */}
@@ -322,7 +372,10 @@ const HomePage = () => {
           {/* Optional Right Border */}
 
           {/* Right Side: Image */}
-          <div className="w-full md:w-1/3 flex justify-center md:mt-0">
+          <div
+            className="w-full md:w-1/3 flex justify-center md:mt-0"
+            ref={imageRef}
+          >
             <img
               src="/assets/AWAHAN 2025.png"
               alt="Awahan 2025"
@@ -334,7 +387,7 @@ const HomePage = () => {
 
       {/* Past Events */}
       <div className="flex flex-col py-12">
-        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 text-[#00629B] past">
+        <h2 className="text-center text-4xl sm:text-3xl md:text-5xl mt-10 text-[#00629B] past">
           Past Events
         </h2>
         <PastEvents />
@@ -345,42 +398,65 @@ const HomePage = () => {
         className="flex flex-col px-4 md:py-24 py-12 pb-0"
         id="activities"
       >
-        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl text-[#00629B] activity">
+        <h2 className="text-center text-4xl sm:text-3xl md:text-5xl text-[#00629B] activity">
           Activities
         </h2>
 
-        <div className="max-w-6xl mx-auto md:flex md:flex-row  items-center mt-10 ">
-          {/* Left side - Image */}
-          <div className="md:w-1/2 w-full flex justify-center">
-            <img
-              src="/assets/ieee-activities.jpg"
-              alt="activities"
-              className="rounded-xl shadow-lg w-full h-[450px]"
-            />
-          </div>
+         <div className="max-w-6xl mx-auto md:flex md:flex-row items-center mt-10 px-4 md:px-0">
+      {/* Left side - Image */}
+      <motion.div
+        className="md:w-1/2 w-full flex justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0, x: 0, y: 50 },
+          visible: {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            transition: { duration: 0.8 },
+          },
+        }}
+      >
+        <img
+          src="/assets/ieee-activities.jpg"
+          alt="activities"
+          className="rounded-xl shadow-lg w-full h-[380px] md:h-[440px] object-fill"
+        />
+      </motion.div>
 
-          {/* Right side - Paragraph + button */}
-          <div className="md:w-1/2 w-full flex flex-col justify-between text-left md:p-8 mt-5 md:mt-0">
-            <p className="text-gray-00  leading-relaxed sm:text-lg md:text-xl">
-              Explore the work of our IEEE VSSUT student members through
-              insightful blogs, magazines, and research papers. Delve into
-              detailed articles covering the latest trends in electronics,
-              robotics, AI, and software development. Learn from hands-on
-              project experiences, technical tutorials, and research findings
-              that highlight student achievements and emerging innovations. This
-              section provides a rich resource of knowledge and ideas,
-              showcasing the creativity and expertise of our members.
-            </p>
+      {/* Right side - Paragraph + button */}
+      <motion.div
+        className="md:w-1/2 w-full flex flex-col justify-between text-left md:p-8 mt-5 md:mt-0"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={{
+          hidden: { opacity: 0, x: 0, y: 50 },
+          visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8, delay: 0.2 } },
+        }}
+      >
+        <p className="text-gray-700 leading-relaxed sm:text-lg md:text-xl">
+          Explore the work of our IEEE VSSUT student members through insightful
+          blogs, magazines, and research papers. Delve into detailed articles
+          covering the latest trends in electronics, robotics, AI, and software
+          development. Learn from hands-on project experiences, technical
+          tutorials, and research findings that highlight student achievements
+          and emerging innovations. This section provides a rich resource of
+          knowledge and ideas, showcasing the creativity and expertise of our
+          members.
+        </p>
 
-            {/* Button aligned to bottom-right */}
-            <div className="flex justify-center mt-6">
-              <button className="flex items-center gap-2 px-6 py-2 border border-blue-800 rounded-full text-gray-900 transition duration-300 hover:bg-blue-950 hover:text-white text-xl">
-                <Link href="/activities">EXPLORE</Link>
-                <MdOutlineArrowOutward />
-              </button>
-            </div>
-          </div>
+        {/* Button aligned to bottom-center */}
+        <div className="flex justify-center mt-6">
+          <button className="flex items-center gap-2 px-6 py-2 border border-blue-800 rounded-full text-gray-900 transition duration-300 hover:bg-blue-950 hover:text-white text-xl">
+            <Link href="/activities">EXPLORE</Link>
+            <MdOutlineArrowOutward />
+          </button>
         </div>
+      </motion.div>
+    </div>
       </section>
 
       {/* Join us */}
@@ -390,7 +466,7 @@ const HomePage = () => {
 
         {/* Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 md:font-normal font-semibold text-gray-900">
-          Vssutians IEEE Awaits You !
+       Carve future with IEEE VSSUT
         </h2>
 
         {/* Paragraph */}

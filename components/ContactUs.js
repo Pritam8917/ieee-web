@@ -71,9 +71,8 @@ const ContactUs = () => {
       </div>
 
       {/* Bottom section */}
-      <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4 mt-6">
+      <div className="flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-4 mt-6">
         <p className="text-gray-400 text-sm md:text-base">© 2025 IEEE VSSUT STUDENT BRANCH</p>
-        <p className="text-gray-300 text-sm md:text-base font-semibold italic">created by @Pritam Das Adhikari</p>
       </div>
     </footer>
   );

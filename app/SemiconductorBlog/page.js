@@ -65,7 +65,7 @@ export default function SemiconductorsInIndiaPage() {
               transition={{ delay: 0.3 }}
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-                <Image
+                <img
                   src="/assets/SemiconductorBlog1.jpg"
                   alt="Futuristic semiconductor chip concept art"
                   width={1365}
@@ -113,7 +113,7 @@ export default function SemiconductorsInIndiaPage() {
           {/* Image section */}
           <motion.div variants={fadeUp}>
             <div className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-white/10">
-              <Image
+              <img
                 src="/assets/SemiconductorBlog2.jpg"
                 alt="Engineer holding a processor die with gloves"
                 width={1000}

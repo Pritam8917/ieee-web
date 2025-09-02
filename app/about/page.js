@@ -132,6 +132,7 @@ const Page = () => {
               <li>• IEEE Computer Society (CS)</li>
               <li>• IEEE Circuits and Systems Society (CASS)</li>
               <li>• IEEE Sensors Council</li>
+              <li>• IEEE Women in Engineering(WIE)</li>
             </ul>
           </div>
         </motion.div>

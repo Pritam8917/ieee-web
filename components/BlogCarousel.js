@@ -106,7 +106,7 @@ const BlogSection = () => {
              flex items-center justify-center gap-2"
                     href={blog.Path}
                   >
-                    Read More
+                    Step Inside
                     <MdOutlineArrowOutward />
                   </Link>
                 </div>

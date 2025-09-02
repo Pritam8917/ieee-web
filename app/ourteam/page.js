@@ -595,7 +595,7 @@ const OurTeam = () => {
   ).map((member) => (
     <div key={member.id} className="text-center">
       <div className="mb-4 mt-6">
-        <div className="w-50 h-50 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
+        <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
           {member.image ? (
             <img
               src={member.image}

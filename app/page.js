@@ -1,103 +1,417 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React, { useRef } from "react";
+import Achievements from "@/components/Achievements";
+import PastEvents from "@/components/PastEvents";
+import ContactUs from "@/components/ContactUs";
+import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+import { ScrollTrigger, ScrollToPlugin } from "gsap/ScrollTrigger";
+import { RxHamburgerMenu } from "react-icons/rx";
+import "animate.css";
+import { MdOutlineArrowOutward } from "react-icons/md";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+const HomePage = () => {
+  const textRef = useRef(".name");
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    const el = textRef.current; // store reference once
+    const split = new SplitText(el, {
+      type: "chars, words",
+      charsClass: "char",
+    });
+
+    let tl = gsap.timeline();
+
+    tl.from(split.chars, {
+      opacity: 0,
+      y: 50,
+      rotationX: 90,
+      transformOrigin: "0% 50% -50",
+      ease: "back.out(1.7)",
+      stagger: 0.05,
+      duration: 1.5,
+      onComplete: () => {
+        split.revert();
+        if (el instanceof HTMLElement) {
+          el.removeAttribute("aria-hidden");
+        }
+      },
+    });
+    //Underline Movement
+
+    //Split text
+    const about = [".about"];
+    about.map((selector) => {
+      gsap.set(selector, { opacity: 1 });
+      let split = SplitText.create(selector, { type: "words", aria: "hidden" });
+      gsap.from(split.words, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "sine.out",
+        stagger: 0.06,
+        scrollTrigger: {
+          trigger: selector,
+          start: "top 80%",
+          end: "bottom 70%",
+          scrub: true,
+        },
+      });
+    });
+  }, []);
+
+  const navItems = [
+    { title: "Home", path: "/" },
+    { title: "Events", path: "#events" },
+    { title: "Achievements", path: "#achievements" },
+    { title: "Our Team", path: "/ourteam" },
+    { title: "Activities", path: "#activities" },
+    { title: "Contact Us", path: "#contact" },
+  ];
+  const navItems2 = [
+    { title: "IEEE.org", href: "https://www.ieee.org/" },
+    {
+      title: "IEEE Xplore",
+      href: "https://ieeexplore.ieee.org/Xplore/home.jsp",
+    },
+    { title: "IEEE Standards", href: "https://standards.ieee.org/" },
+    { title: "IEEE Spectrum", href: "https://spectrum.ieee.org/" },
+    { title: "More IEEE Sites", href: "https://www.ieee.org/sitemap.html" },
+  ];
+  const socialItems = [
+    {
+      href: "https://m.facebook.com/profile.php?id=100068659627163",
+      src: "/assets/navfab.jpg",
+      alt: "facebook",
+    },
+    {
+      href: "https://www.instagram.com/ieeevssut/",
+      src: "/assets/navig.jpg",
+      alt: "instagram",
+    },
+
+    {
+      href: "https://www.linkedin.com/company/ieee-vssut-burla-student-branch/",
+      src: "/assets/navlink.jpg",
+      alt: "linkedin",
+    },
+    {
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com",
+      src: "/assets/navema.jpg",
+      alt: "email",
+    },
+  ];
+  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="bg-white">
+      {/* Top Navbar */}
+      <nav className="bg-gray-50 shadow-md font-serif top-0">
+        <div className="flex items-center justify-between px-6 py-3">
+          {/* Logo (Mobile only) */}
+          <div className="md:hidden">
+            <img
+              src="/assets/ieee_logo.png"
+              alt="IEEE Logo"
+              className="h-13 w-13 bg-white text-white"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          <div className="hidden md:flex gap-7 text-[#00629B]">
+            {navItems2.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="hover:text-blue-600"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+          <div className="hidden md:flex gap-5 items-center">
+            {socialItems.map((item) => (
+              <Link key={item.alt} href={item.href}>
+                <img src={item.src} alt={item.alt} className="w-6 h-6" />
+              </Link>
+            ))}
+          </div>
+
+          {/* Hamburger Menu (Mobile only) */}
+          <div
+            className="md:hidden text-[#00629B] cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            Read our docs
-          </a>
+            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden flex flex-col gap-4 px-6 pb-4 text-[#00629B]">
+            {navItems2.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="hover:text-blue-600"
+              >
+                {item.title}
+              </Link>
+            ))}
+            <div className="flex gap-4 mt-3">
+              {socialItems.map((item) => (
+                <Link key={item.alt} href={item.href}>
+                  <img src={item.src} alt={item.alt} className="w-6 h-6" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative w-full h-[30vh] md:h-[78vh] overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/assets/home-bg.jpg')] bg-cover bg-center brightness-80 z-0"></div>
+        <div className="relative z-10 flex flex-col justify-between h-full text-white">
+          <div className="pt-6 pl-6 sm:pt-9 sm:pl-16 md:pl-20 h-[35%] ">
+            <img
+              src="/assets/Logoieee.svg"
+              alt="IEEE Logo"
+              className="w-28 sm:w-40 md:w-48 lg:w-56"
+            />
+          </div>
+          {/* Title */}
+          <div className="pl-6 sm:pl-16 md:pl-20 h-[40%] flex items-center">
+            <span className="font-semibold text-3xl sm:text-4xl md:text-4xl lg:text-6xl leading-snug name">
+              IEEE VSSUT STUDENT BRANCH
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Sticky Menu */}
+      <nav className="sticky top-0 z-40 w-full bg-black text-white">
+        <div className="flex items-center justify-between md:px-5 md:py- px-3 py-2">
+          {/* Left: Hamburger (mobile only) */}
+          <div
+            className="md:hidden  cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? (
+              <X className="text-white h-8 w-8" />
+            ) : (
+              <RxHamburgerMenu className="text-white h-8 w-8" />
+            )}
+          </div>
+          {/* Left: Nav Links (desktop) */}
+          <div className="hidden md:flex gap-8 text-2xl">
+            {navItems.map((item) => (
+              <Link
+                key={item.title}
+                href={item.title === "Our Team" ? "/ourteam" : item.path}
+                className="hover:text-[#003C67]"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right: Logo */}
+          <div className="hidden md:flex justify-end">
+            <img
+              src="/assets/ieee_logo2.png"
+              alt="IEEE Logo"
+              className="h-16 w-16 object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute  left-0 w-full bg-black text-white shadow-lg  flex flex-col items-center gap-1 py-6 z-50 md:hidden"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.title === "Our Team" ? "/ourteam" : item.path}
+                  className="w-[80%] text-center py-3 rounded-md font-semibold text-lg 
+                     hover:bg-white hover:text-black transition"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* About Section */}
+      <div className="flex flex-col px-4 sm:px-8 lg:px-20 mt-20">
+        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl text-[#00629B] aboutA">
+          About Us
+        </h2>
+
+        {/* Paragraph */}
+        <p className="text-center text-gray-900 text-base sm:text-lg md:text-xl py-5 max-w-3xl mx-auto leading-relaxed about">
+          The IEEE VSSUT Student Branch is a vibrant community of enthusiastic
+          engineers, innovators, and leaders driven by technology and a shared
+          passion for advancing humanity. Affiliated with the Institute of
+          Electrical and Electronics Engineers (IEEE), the world’s largest
+          technical professional organization, our branch at Veer Surendra Sai
+          University of Technology (VSSUT), Burla fosters learning,
+          collaboration, and innovation across diverse engineering domains.
+          Through workshops, seminars, hackathons, and outreach programs, we
+          empower students to develop technical expertise while nurturing
+          teamwork and leadership qualities. With a strong focus on research,
+          innovation, and professional growth, the IEEE VSSUT Student Branch
+          serves as a platform where young minds can transform ideas into
+          impactful solutions for society.
+        </p>
+      </div>
+
+      {/* Achievements Section */}
+      <section className="py-15 " id="achievements">
+        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 achieve text-[#00629B]">
+          Achievements
+        </h2>
+        {/* Achievements Component with padding */}
+        <div className="px-4 sm:px-8 lg:px-20 mt-10">
+          <Achievements />
+        </div>
+      </section>
+      {/* Upcoming Events */}
+      <section className="py-15 px-4 sm:px-8 lg:px-20" id="events">
+        {/* Heading */}
+        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 text-[#00629B] upcoming">
+          Upcoming Events
+        </h2>
+
+        {/* Event Content */}
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 md:gap-20 md:mt-15 ">
+          {/* Optional Left Border */}
+          <div className=" border-l-2  h-full"></div>
+          {/* Left Side: Text */}
+          <div className="w-full md:w-1/2">
+            <h1 className="text-2xl sm:text-3xl md:text-3xl text-black mb-2 font-bold leading-snug">
+              आह्वान – The Orientation
+            </h1>
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-black mb-4 font-light leading-snug">
+              An IEEE VSSUT Student Branch initiative to welcome and guide new
+              students.
+            </h2>
+            <p className="text-gray-800 text-base sm:text-lg md:text-xl leading-relaxed">
+              आह्वान is the official orientation program of IEEE VSSUT Student
+              Branch, designed to introduce freshers to the IEEE community, its
+              societies, and the countless opportunities it offers. The event
+              will help students explore innovation, collaboration, and growth
+              while connecting with like-minded peers and mentors.
+            </p>
+          </div>
+
+          {/* Optional Right Border */}
+
+          {/* Right Side: Image */}
+          <div className="w-full md:w-1/3 flex justify-center md:mt-0">
+            <img
+              src="/assets/AWAHAN 2025.png"
+              alt="Awahan 2025"
+              className="rounded-xl shadow-lg w-full max-w-md sm:max-w-lg md:max-w-xl h-auto object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events */}
+      <div className="flex flex-col py-12">
+        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl mt-10 text-[#00629B] past">
+          Past Events
+        </h2>
+        <PastEvents />
+      </div>
+
+      {/* Activities */}
+      <section
+        className="flex flex-col px-4 md:py-24 py-12 pb-0"
+        id="activities"
+      >
+        <h2 className="text-center text-5xl sm:text-4xl md:text-5xl text-[#00629B] activity">
+          Activities
+        </h2>
+
+        <div className="max-w-6xl mx-auto md:flex md:flex-row  items-center mt-10 ">
+          {/* Left side - Image */}
+          <div className="md:w-1/2 w-full flex justify-center">
+            <img
+              src="/assets/ieee-activities.jpg"
+              alt="activities"
+              className="rounded-xl shadow-lg w-full h-[450px]"
+            />
+          </div>
+
+          {/* Right side - Paragraph + button */}
+          <div className="md:w-1/2 w-full flex flex-col justify-between text-left md:p-8 mt-5 md:mt-0">
+            <p className="text-gray-00  leading-relaxed sm:text-lg md:text-xl">
+              Explore the work of our IEEE VSSUT student members through
+              insightful blogs, magazines, and research papers. Delve into
+              detailed articles covering the latest trends in electronics,
+              robotics, AI, and software development. Learn from hands-on
+              project experiences, technical tutorials, and research findings
+              that highlight student achievements and emerging innovations. This
+              section provides a rich resource of knowledge and ideas,
+              showcasing the creativity and expertise of our members.
+            </p>
+
+            {/* Button aligned to bottom-right */}
+            <div className="flex justify-center mt-6">
+              <button className="flex items-center gap-2 px-6 py-2 border border-blue-800 rounded-full text-gray-900 transition duration-300 hover:bg-blue-950 hover:text-white text-xl">
+                <Link href="/activities">EXPLORE</Link>
+                <MdOutlineArrowOutward />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Join us */}
+      <div className="flex flex-col items-center text-center px-4 sm:px-8 lg:px-20 py-10 sm:py-16 mt-18">
+        {/* Top Border */}
+        <div className="border-t-2 border-[#40C8E9] w-16 sm:w-24 md:w-32 mb-6"></div>
+
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 md:font-normal font-semibold text-gray-900">
+          Vssutians IEEE Awaits You !
+        </h2>
+
+        {/* Paragraph */}
+        <p className="text-gray-800 text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl italic">
+          When you become a member, you will enjoy access to unparalleled
+          resources, networking opportunities, and the collective knowledge of
+          the world’s leading tech professionals.
+        </p>
+        {/* Button */}
+        <button className="relative overflow-hidden text-blue-900 font-semibold text-base sm:text-lg md:text-xl border rounded-full cursor-pointer px-6 py-3 mt-8 border-blue-800 transition duration-300 hover:text-white hover:bg-blue-950 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-800">
+          <Link href="/JoinVssut">Join IEEE VSSUT SB</Link>
+        </button>
+
+        {/* Bottom Border */}
+        <div className="border-t-2 border-[#40C8E9] w-16 sm:w-24 md:w-32 mt-8"></div>
+      </div>
+
+      {/* Footer */}
+      <ContactUs />
     </div>
   );
-}
+};
+
+export default HomePage;

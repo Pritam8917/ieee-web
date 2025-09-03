@@ -121,17 +121,20 @@ const HomePage = () => {
       href: "https://m.facebook.com/profile.php?id=100068659627163",
       src: "/assets/navfab.jpg",
       alt: "facebook",
+      type:"facebook"
     },
     {
       href: "https://www.instagram.com/ieeevssut/",
       src: "/assets/navig.jpg",
       alt: "instagram",
+      type:"instagram"
     },
 
     {
       href: "https://www.linkedin.com/company/ieee-vssut-burla-student-branch/",
       src: "/assets/navlink.jpg",
       alt: "linkedin",
+      type:"linkedin"
     },
     {
       href: "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com",

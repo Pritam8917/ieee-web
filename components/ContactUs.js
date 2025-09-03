@@ -6,7 +6,17 @@ import { TfiLinkedin } from "react-icons/tfi";
 import { SiGmail } from "react-icons/si";
 import { FaFacebookF } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
+import { useState } from "react";
+import { useEffect } from "react";
 const ContactUs = () => {
+  const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      // Basic mobile detection
+      if (/android|iPhone|iPad|iPod/i.test(userAgent)) {
+        setIsMobile(true);
+      }
+    }, []);
   return (
     <footer
       className="bg-gradient-to-r from-black via-gray-900 to-[#00629B] text-white px-4 sm:px-8 lg:px-20 py-10 flex flex-col gap-10"
@@ -58,8 +68,8 @@ const ContactUs = () => {
             <Link href="https://www.linkedin.com/company/ieee-vssut-burla-student-branch/" className="hover:text-blue-700 focus-within:text-blue-700">
               <TfiLinkedin />
             </Link>
-            <Link href="https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com" className="hover:text-red-500 focus-within:text-red-500 h-5 w-5">
-           <SiGmail />
+            <Link href={isMobile ? "mailto:ieee.vssut.sb01@gmail.com" : "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com"} className="hover:text-red-500 focus-within:text-red-500 h-5 w-5">
+              <SiGmail />
             </Link>
           </div>
         </div>

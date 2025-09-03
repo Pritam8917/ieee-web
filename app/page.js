@@ -5,7 +5,7 @@ import Achievements from "@/components/Achievements";
 import PastEvents from "@/components/PastEvents";
 import ContactUs from "@/components/ContactUs";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
+
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,15 +17,17 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
-
-
 const HomePage = () => {
-
   const nameRef = useRef(null);
   const textRef = useRef(null);
   const imageRef = useRef(null);
-
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Basic mobile detection
+    if (/android|iPhone|iPad|iPod/i.test(userAgent)) {
+      setIsMobile(true);
+    }
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     // Animate Hero Heading
@@ -135,6 +137,7 @@ const HomePage = () => {
       href: "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com",
       src: "/assets/navema.jpg",
       alt: "email",
+      type: "mail",
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -165,11 +168,24 @@ const HomePage = () => {
             ))}
           </div>
           <div className="hidden md:flex gap-5 items-center">
-            {socialItems.map((item) => (
-              <Link key={item.alt} href={item.href}>
-                <img src={item.src} alt={item.alt} className="w-6 h-6" />
-              </Link>
-            ))}
+            {socialItems.map((item) => {
+              const isMail = item.type === "mail"; // 👈 add a property in socialItems for mail
+              const href = isMail
+                ? isMobile
+                  ? `mailto:${item.alt}` // Mobile → open mail app
+                  : item.href // Desktop → Gmail web (or whatever you set in item.href)
+                : item.href; // Normal case for others
+              return (
+                <Link
+                  key={item.alt}
+                  href={href}
+                  target={!isMobile && isMail ? "_blank" : undefined}
+                  rel={!isMobile && isMail ? "noopener noreferrer" : undefined}
+                >
+                  <img src={item.src} alt={item.alt} className="w-6 h-6" />
+                </Link>
+              );
+            })}
           </div>
 
           {/* Hamburger Menu (Mobile only) */}
@@ -389,61 +405,66 @@ const HomePage = () => {
           Activities
         </h2>
 
-         <div className="max-w-6xl mx-auto md:flex md:flex-row items-center mt-10 px-4 md:px-0">
-      {/* Left side - Image */}
-      <motion.div
-        className="md:w-1/2 w-full flex justify-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={{
-          hidden: { opacity: 0, x: 0, y: 50 },
-          visible: {
-            opacity: 1,
-            x: 0,
-            y: 0,
-            transition: { duration: 0.8 },
-          },
-        }}
-      >
-        <img
-          src="/assets/ieee-activities.jpg"
-          alt="activities"
-          className="rounded-xl shadow-lg w-full h-[380px] md:h-[440px] object-fill"
-        />
-      </motion.div>
+        <div className="max-w-6xl mx-auto md:flex md:flex-row items-center mt-10 px-4 md:px-0">
+          {/* Left side - Image */}
+          <motion.div
+            className="md:w-1/2 w-full flex justify-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0, x: 0, y: 50 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: { duration: 0.8 },
+              },
+            }}
+          >
+            <img
+              src="/assets/ieee-activities.jpg"
+              alt="activities"
+              className="rounded-xl shadow-lg w-full h-[380px] md:h-[440px] object-fill"
+            />
+          </motion.div>
 
-      {/* Right side - Paragraph + button */}
-      <motion.div
-        className="md:w-1/2 w-full flex flex-col justify-between text-left md:p-8 mt-5 md:mt-0"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={{
-          hidden: { opacity: 0, x: 0, y: 50 },
-          visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8, delay: 0.2 } },
-        }}
-      >
-        <p className="text-gray-700 leading-relaxed sm:text-lg md:text-xl">
-          Explore the work of our IEEE VSSUT student members through insightful
-          blogs, magazines, and research papers. Delve into detailed articles
-          covering the latest trends in electronics, robotics, AI, and software
-          development. Learn from hands-on project experiences, technical
-          tutorials, and research findings that highlight student achievements
-          and emerging innovations. This section provides a rich resource of
-          knowledge and ideas, showcasing the creativity and expertise of our
-          members.
-        </p>
+          {/* Right side - Paragraph + button */}
+          <motion.div
+            className="md:w-1/2 w-full flex flex-col justify-between text-left md:p-8 mt-5 md:mt-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0, x: 0, y: 50 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                transition: { duration: 0.8, delay: 0.2 },
+              },
+            }}
+          >
+            <p className="text-gray-700 leading-relaxed sm:text-lg md:text-xl">
+              Explore the work of our IEEE VSSUT student members through
+              insightful blogs, magazines, and research papers. Delve into
+              detailed articles covering the latest trends in electronics,
+              robotics, AI, and software development. Learn from hands-on
+              project experiences, technical tutorials, and research findings
+              that highlight student achievements and emerging innovations. This
+              section provides a rich resource of knowledge and ideas,
+              showcasing the creativity and expertise of our members.
+            </p>
 
-        {/* Button aligned to bottom-center */}
-        <div className="flex justify-center mt-6">
-          <button className="flex items-center gap-2 px-6 py-2 border border-blue-800 rounded-full text-gray-900 transition duration-300 hover:bg-blue-950 hover:text-white text-xl">
-            <Link href="/activities">EXPLORE</Link>
-            <MdOutlineArrowOutward />
-          </button>
+            {/* Button aligned to bottom-center */}
+            <div className="flex justify-center mt-6">
+              <button className="flex items-center gap-2 px-6 py-2 border border-blue-800 rounded-full text-gray-900 transition duration-300 hover:bg-blue-950 hover:text-white text-xl">
+                <Link href="/activities">EXPLORE</Link>
+                <MdOutlineArrowOutward />
+              </button>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </div>
       </section>
 
       {/* Join us */}
@@ -453,7 +474,7 @@ const HomePage = () => {
 
         {/* Heading */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 md:font-normal font-semibold text-gray-900">
-       Carve future with IEEE VSSUT
+          Carve future with IEEE VSSUT
         </h2>
 
         {/* Paragraph */}

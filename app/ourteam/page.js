@@ -29,9 +29,9 @@ const OurTeam = () => {
       name: "Harish Kumar Sahu",
       position: "BRANCH COUNSELOR",
       image: "/assets/Harish Kumar Sahu.jpg",
-      linkedin: "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin:
+        "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       email: "",
-
     },
     {
       id: 2,
@@ -40,18 +40,17 @@ const OurTeam = () => {
       image: "/assets/SohanKumarNayak.jpg",
       linkedin: "https://www.linkedin.com/in/sohan-kumar-nayak-8198292a7/",
       email: "nksohan10@gmail.com",
-
     },
-       {
-      id:3,
-      name:"Debabrata Sahoo",
+    {
+      id: 3,
+      name: "Debabrata Sahoo",
       position: "PAST-CHAIR",
-      image:"/assets/Debabrata Sahoo .jpg",
+      image: "/assets/Debabrata Sahoo .jpg",
       linkedin: "",
       email: "",
     },
     {
-      id: 3,
+      id: 4,
       name: "Priyadarshani Mahapatra",
       position: "VICE-CHAIR",
       image: "/assets/Priyadarshani.jpg",
@@ -59,7 +58,7 @@ const OurTeam = () => {
       email: "priyadarshani13022005@gmail.com",
     },
     {
-      id: 4,
+      id: 5,
       name: "Disha Darshita",
       position: "SECRETARY (SA)",
       image: "/assets/DishaDarshita.jpg",
@@ -67,7 +66,7 @@ const OurTeam = () => {
       email: "dishadarshita2004@gmail.com",
     },
     {
-      id: 5,
+      id: 6,
       name: "Suvendu Sahoo",
       position: "SECRETARY (SC)",
       image: "/assets/Suvendu Sahoo.jpg",
@@ -75,7 +74,7 @@ const OurTeam = () => {
       email: "sahoosuvendu3251@gmail.com",
     },
     {
-      id: 6,
+      id: 7,
       name: "Ratnakar Sahoo",
       position: "ASSISTANT SECRETARY",
       image: "/assets/Ratnakar Sahoo.jpg",
@@ -83,7 +82,7 @@ const OurTeam = () => {
       email: "sahooratnakar2006@gmail.com",
     },
     {
-      id: 7,
+      id: 8,
       name: "Amartya Sahoo",
       position: "TREASURER",
       image: "/assets/Amartya Sahoo.jpg",
@@ -91,7 +90,7 @@ const OurTeam = () => {
       email: "amartya7sahoo77@gmail.com",
     },
     {
-      id: 8,
+      id: 9,
       name: "A. Akhila",
       position: "PR LEAD",
       image: "/assets/Akhila.jpg",
@@ -99,15 +98,15 @@ const OurTeam = () => {
       email: "aakkhhii30@gmail.com",
     },
     {
-      id: 9,
+      id: 10,
       name: "Manish Kumar Bisoi",
       position: "GRAPHICS DESIGN LEAD",
-       image: "/assets/Manish Kumar Bisoi.jpg",
+      image: "/assets/Manish Kumar Bisoi.jpg",
       linkedin: "https://www.linkedin.com/in/manish-kumar-bisoi-b53b96304/",
       email: "manishkumarbisoi@example.com",
     },
     {
-      id: 10,
+      id: 11,
       name: "Pratyush Kumar Sahoo",
       position: "CONTENT LEAD",
       image: "/assets/Pratyush Kumar Sahoo.jpg",
@@ -115,7 +114,7 @@ const OurTeam = () => {
       email: "pratyushsahoo88518@gmail.com",
     },
     {
-      id: 11,
+      id: 12,
       name: "Abhinash Dwibedi",
       position: "WEB MASTER",
       image: "/assets/AbinashDwibedi.jpg",
@@ -123,7 +122,7 @@ const OurTeam = () => {
       email: "dwibedi.abinash123@gmail.com",
     },
     {
-      id: 12,
+      id: 13,
       name: "Prabhat Ranjan Mohanta",
       position: "R&A (Magazine Publ.) LEAD",
       image: "/assets/prabhat ranjan mohanta.png",
@@ -150,10 +149,10 @@ const OurTeam = () => {
       email: "sahooratnakar2006@gmail.com",
     },
     {
-      id:3,
-      name:"Debabrata Sahoo",
+      id: 3,
+      name: "Debabrata Sahoo",
       position: "PAST-CHAIR",
-      image:"/assets/Debabrata Sahoo .jpg",
+      image: "/assets/Debabrata Sahoo .jpg",
       linkedin: "",
       email: "",
     },
@@ -162,7 +161,8 @@ const OurTeam = () => {
       name: "Sanket Pradhan",
       position: "VICE-CHAIR",
       image: "/assets/Sanket Pradhan.jpg",
-      linkedin: "https://www.linkedin.com/in/sanket-pradhan-73a5742a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      linkedin:
+        "https://www.linkedin.com/in/sanket-pradhan-73a5742a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       email: "sanketpradhan2004@gmail.com",
     },
     {
@@ -201,12 +201,15 @@ const OurTeam = () => {
 
   // Computer Society Members
   const teamMembersCS = [
-    {  id: 1,
+    {
+      id: 1,
       name: "Harish Kumar Sahu",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
-      linkedin: "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "",},
+      linkedin:
+        "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      email: "",
+    },
     {
       id: 2,
       name: "Sanket Sahoo",
@@ -223,7 +226,7 @@ const OurTeam = () => {
       linkedin: "",
       email: "",
     },
-    
+
     {
       id: 4,
       name: "Abhinash Dwibedi",
@@ -260,14 +263,17 @@ const OurTeam = () => {
 
   // ComSoc Members
   const teamMembersComSoc = [
-        {  id: 1,
+    {
+      id: 1,
       name: "Harish Kumar Sahu",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
-      linkedin: "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "",},
+      linkedin:
+        "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      email: "",
+    },
     {
-      id: 1,
+      id: 2,
       name: "Aayush Kumar Giri",
       position: "CHAIR",
       image: "/assets/Ayush Giri.jpg",
@@ -275,7 +281,7 @@ const OurTeam = () => {
       email: "aayushkumargiri8531@gmail.com",
     },
     {
-      id: 2,
+      id: 3,
       name: "Subhranshu Sekhar Panda",
       position: "PAST-CHAIR",
       image: "/assets/Subhranshu Sekhar Panda.jpg",
@@ -283,7 +289,7 @@ const OurTeam = () => {
       email: "",
     },
     {
-      id: 3,
+      id: 4,
       name: "Manish Kumar Bisoi",
       position: "VICE-CHAIR",
       image: "/assets/Manish Kumar Bisoi.jpg",
@@ -291,7 +297,7 @@ const OurTeam = () => {
       email: "manishkumarbisoi@example.com",
     },
     {
-      id: 4,
+      id: 5,
       name: "Mohit Pradhan",
       position: "SECRETARY",
       image: "/assets/Mohit Pradhan.jpg",
@@ -299,7 +305,7 @@ const OurTeam = () => {
       email: "pradhanmohit884@gmail.com",
     },
     {
-      id: 5,
+      id: 6,
       name: "Ritim Tripathy",
       position: "TREASURER",
       image: "/assets/Ritim Tripathy.jpg",
@@ -307,7 +313,7 @@ const OurTeam = () => {
       email: "ritimtripathy2004@gmail.com",
     },
     {
-      id: 6,
+      id: 7,
       name: "Amartya Sahoo",
       position: "WEB MASTER",
       image: "/assets/Amartya Sahoo.jpg",
@@ -318,14 +324,17 @@ const OurTeam = () => {
 
   // Sensor Council Members
   const teamMembersSensorCouncil = [
-        {  id: 1,
+    {
+      id: 1,
       name: "Harish Kumar Sahu",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
-      linkedin: "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      email: "",},
+      linkedin:
+        "https://www.linkedin.com/in/harish-kumar-sahoo-04b57938?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      email: "",
+    },
     {
-      id: 1,
+      id: 2,
       name: "Suvendu Sahoo",
       position: "CHAIR",
       image: "/assets/Suvendu Sahoo.jpg",
@@ -333,7 +342,7 @@ const OurTeam = () => {
       email: "sahoosuvendu3251@gmail.com",
     },
     {
-      id: 2,
+      id: 3,
       name: "Kali Prasad Mishra",
       position: "PAST-CHAIR",
       image: "/assets/Kali Prasad Mishra .jpg",
@@ -341,7 +350,7 @@ const OurTeam = () => {
       email: "",
     },
     {
-      id: 3,
+      id: 4,
       name: "Swarup Mahakud",
       position: "VICE-CHAIR",
       image: "/assets/Swarup Mahakud.jpg",
@@ -349,7 +358,7 @@ const OurTeam = () => {
       email: "swarup.mahakud.2005@gmail.com",
     },
     {
-      id: 4,
+      id: 5,
       name: "Soumyaranjan Pruseth",
       position: "SECRETARY",
       image: "/assets/Soumyaranjan Pruseth .jpg",
@@ -357,7 +366,7 @@ const OurTeam = () => {
       email: "soumyaranjanpruseth@gmail.com",
     },
     {
-      id: 5,
+      id: 6,
       name: "Ashish Ayushman Sahoo",
       position: "TREASURER",
       image: "/assets/Ashish Ayushman Sahoo.jpg",
@@ -365,7 +374,7 @@ const OurTeam = () => {
       email: "example@example.com",
     },
     {
-      id: 6,
+      id: 7,
       name: "Sriya Sahoo",
       position: "WEB MASTER",
       image: "/assets/sriya sahoo.jpg",
@@ -385,7 +394,7 @@ const OurTeam = () => {
       email: "",
     },
     {
-      id: 1,
+      id: 2,
       name: "Priyadarshani Mahapatra",
       position: "CHAIR",
       image: "/assets/Priyadarshani.jpg",
@@ -393,7 +402,7 @@ const OurTeam = () => {
       email: "priyadarshani13022005@gmail.com",
     },
     {
-      id: 2,
+      id: 3,
       name: "Ishita Pani",
       position: "PAST-CHAIR",
       image: "/assets/Ishita Pani.jpg",
@@ -401,7 +410,7 @@ const OurTeam = () => {
       email: "",
     },
     {
-      id: 3,
+      id: 4,
       name: "Disha Darshita",
       position: "VICE-CHAIR",
       image: "/assets/DishaDarshita.jpg",
@@ -409,7 +418,7 @@ const OurTeam = () => {
       email: "dishadarshita2004@gmail.com",
     },
     {
-      id: 4,
+      id: 5,
       name: "A. Akhila",
       position: "SECRETARY (SA)",
       image: "/assets/Akhila.jpg",
@@ -417,7 +426,7 @@ const OurTeam = () => {
       email: "aakkhhii30@gmail.com",
     },
     {
-      id: 5,
+      id: 6,
       name: "Sthyti Pragyan Sahu",
       position: "SECRETARY (SC)",
       image: "/assets/Sthyti Pragyan Sahu.webp",
@@ -425,7 +434,7 @@ const OurTeam = () => {
       email: "sthyti2004@gmail.com",
     },
     {
-      id: 6,
+      id: 7,
       name: "Killamchetty Abhilasha",
       position: "TREASURER",
       image: "/assets/killamchetty Abhilasha.jpg",
@@ -433,7 +442,7 @@ const OurTeam = () => {
       email: "",
     },
     {
-      id: 7,
+      id: 8,
       name: "Sriya Sahoo",
       position: "WEB MASTER",
       image: "/assets/sriya sahoo.jpg",
@@ -580,67 +589,70 @@ const OurTeam = () => {
         </div>
 
         {/* Team Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-  {(selectedTab === tabs[0]
-    ? teamMembersStudentBranch
-    : selectedTab === tabs[1]
-    ? teamMembersCASS
-    : selectedTab === tabs[2]
-    ? teamMembersCS
-    : selectedTab === tabs[3]
-    ? teamMembersComSoc
-    : selectedTab === tabs[4]
-    ? teamMembersSensorCouncil
-    : teamMembersWIE
-  ).map((member) => (
-    <div key={member.id} className="text-center">
-      <div className="mb-4 mt-6">
-        <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
-          {member.image ? (
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <div className="text-gray-500">No Image</div>
-          )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {(selectedTab === tabs[0]
+            ? teamMembersStudentBranch
+            : selectedTab === tabs[1]
+            ? teamMembersCASS
+            : selectedTab === tabs[2]
+            ? teamMembersCS
+            : selectedTab === tabs[3]
+            ? teamMembersComSoc
+            : selectedTab === tabs[4]
+            ? teamMembersSensorCouncil
+            : teamMembersWIE
+          ).map((member) => (
+            <div key={member.id} className="text-center">
+              <div className="mb-4 mt-6">
+                <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-gray-500">No Image</div>
+                  )}
+                </div>
+              </div>
+              <p className="font-bold text-[#00629B] mb-3 text-xl sm:text-2xl">
+                {member.name}
+              </p>
+              <h3 className="mb-4 font-semibold text-gray-900 text-sm sm:text-base">
+                {member.position}
+              </h3>
+
+              <div className="flex justify-center space-x-4">
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl"
+                  >
+                    <RiLinkedinFill className="w-7 h-7" />
+                  </a>
+                )}
+
+                {member.email && (
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
+                  >
+                    <img
+                      src="/assets/mail-icon.webp"
+                      alt="Gmail"
+                      className="w-9 h-6"
+                    />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      <p className="font-bold text-[#00629B] mb-3 text-xl sm:text-2xl">{member.name}</p>
-      <h3 className="mb-4 font-semibold text-gray-900 text-sm sm:text-base">{member.position}</h3>
-
-      <div className="flex justify-center space-x-4">
-        {member.linkedin && (
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl"
-          >
-            <RiLinkedinFill className="w-7 h-7" />
-          </a>
-        )}
-
-        {member.email && (
-          <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
-          >
-            <img
-              src="/assets/mail-icon.webp"
-              alt="Gmail"
-              className="w-9 h-6"
-            />
-          </a>
-        )}
-      </div>
-    </div>
-  ))}
-</div>
-
       </main>
 
       <Footer />

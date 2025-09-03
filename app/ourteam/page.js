@@ -6,11 +6,13 @@ import Footer from "@/components/Footer";
 import { Menu, X } from "lucide-react";
 import { RiLinkedinFill } from "react-icons/ri";
 import { TbMail } from "react-icons/tb";
+import { useEffect } from "react";
 const OurTeam = () => {
   const [selectedYear, setSelectedYear] = useState("2025 - 2026");
   const [showYearDropdown, setShowYearDropdown] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Student Branch");
   const [isMobile, setIsMobile] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
   const yearOptions = ["2025 - 2026"];
   const tabs = [
@@ -458,9 +460,6 @@ const OurTeam = () => {
       setIsMobile(true);
     }
   }, []);
-  const href = isMobile
-    ? `mailto:${email}` // Mobile → opens mail app
-    : `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`; // Desktop → Gmail web
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#e6f2fa] to-[#ffffff]">
@@ -611,57 +610,62 @@ const OurTeam = () => {
             : selectedTab === tabs[4]
             ? teamMembersSensorCouncil
             : teamMembersWIE
-          ).map((member) => (
-            <div key={member.id} className="text-center">
-              <div className="mb-4 mt-6">
-                <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-gray-500">No Image</div>
+          ).map((member) => {
+            const href = isMobile
+              ? `mailto:${member.email}` // Mobile → opens mail app
+              : `https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`; // Desktop → Gmail web
+            return (
+              <div key={member.id} className="text-center">
+                <div className="mb-4 mt-6">
+                  <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="text-gray-500">No Image</div>
+                    )}
+                  </div>
+                </div>
+                <p className="font-bold text-[#00629B] mb-3 text-xl sm:text-2xl">
+                  {member.name}
+                </p>
+                <h3 className="mb-4 font-semibold text-gray-900 text-sm sm:text-base">
+                  {member.position}
+                </h3>
+
+                <div className="flex justify-center space-x-4">
+                  {member.linkedin && (
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl"
+                    >
+                      <RiLinkedinFill className="w-7 h-7" />
+                    </a>
+                  )}
+
+                  {member.email && (
+                    <a
+                      href={href}
+                      target={!isMobile ? "_blank" : undefined}
+                      rel={!isMobile ? "noopener noreferrer" : undefined}
+                      className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
+                    >
+                      <img
+                        src="/assets/mail-icon.webp"
+                        alt="Gmail"
+                        className="w-9 h-6"
+                      />
+                    </a>
                   )}
                 </div>
               </div>
-              <p className="font-bold text-[#00629B] mb-3 text-xl sm:text-2xl">
-                {member.name}
-              </p>
-              <h3 className="mb-4 font-semibold text-gray-900 text-sm sm:text-base">
-                {member.position}
-              </h3>
-
-              <div className="flex justify-center space-x-4">
-                {member.linkedin && (
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl"
-                  >
-                    <RiLinkedinFill className="w-7 h-7" />
-                  </a>
-                )}
-
-                {member.email && (
-                  <a
-                    href={href}
-                    target={!isMobile ? "_blank" : undefined}
-                    rel={!isMobile ? "noopener noreferrer" : undefined}
-                    className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
-                  >
-                    <img
-                      src="/assets/mail-icon.webp"
-                      alt="Gmail"
-                      className="w-9 h-6"
-                    />
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </main>
 

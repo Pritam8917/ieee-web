@@ -105,6 +105,7 @@ const HomePage = () => {
     { title: "Our Team", path: "/ourteam" },
     { title: "Activities", path: "#activities" },
     { title: "Contact Us", path: "#contact" },
+    { title: "Gallery", path: "/gallery" },
   ];
   const navItems2 = [
     { title: "IEEE.org", href: "https://www.ieee.org/" },
@@ -121,20 +122,20 @@ const HomePage = () => {
       href: "https://m.facebook.com/profile.php?id=100068659627163",
       src: "/assets/navfab.jpg",
       alt: "facebook",
-      type:"facebook"
+      type: "facebook",
     },
     {
       href: "https://www.instagram.com/ieeevssut/",
       src: "/assets/navig.jpg",
       alt: "instagram",
-      type:"instagram"
+      type: "instagram",
     },
 
     {
       href: "https://www.linkedin.com/company/ieee-vssut-burla-student-branch/",
       src: "/assets/navlink.jpg",
       alt: "linkedin",
-      type:"linkedin"
+      type: "linkedin",
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -166,12 +167,9 @@ const HomePage = () => {
           </div>
           <div className="hidden md:flex gap-5 items-center">
             {socialItems.map((item) => (
-                <Link
-                  key={item.alt}
-                  href={item.href}
-                >
-                  <img src={item.src} alt={item.alt} className="w-6 h-6" />
-                </Link>
+              <Link key={item.alt} href={item.href}>
+                <img src={item.src} alt={item.alt} className="w-6 h-6" />
+              </Link>
             ))}
           </div>
 
@@ -249,7 +247,13 @@ const HomePage = () => {
             {navItems.map((item) => (
               <Link
                 key={item.title}
-                href={item.title === "Our Team" ? "/ourteam" : item.path}
+                href={
+                  item.title === "Our Team"
+                    ? "/ourteam"
+                    : item.title === "Gallery"
+                    ? "/gallery"
+                    : item.path
+                }
                 className="hover:text-[#003C67]"
               >
                 {item.title}

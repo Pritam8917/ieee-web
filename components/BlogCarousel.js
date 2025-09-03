@@ -57,7 +57,7 @@ const BlogSection = () => {
       {/* Heading */}
       <div className="flex items-center justify-center mb-12">
         <h1
-          className="text-center text-5xl sm:text-4xl md:text-5xl"
+          className="text-center text-4xl sm:text-3xl md:text-5xl"
           style={{ color: "#00629B" }}
         >
           Blogs

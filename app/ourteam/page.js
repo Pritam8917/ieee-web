@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react";
 import { RiLinkedinFill } from "react-icons/ri";
 import { TbMail } from "react-icons/tb";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+
 const OurTeam = () => {
   const [selectedYear, setSelectedYear] = useState("2025 - 2026");
   const [showYearDropdown, setShowYearDropdown] = useState(false);
@@ -493,6 +495,12 @@ const OurTeam = () => {
               >
                 Activities
               </Link>
+              <Link
+                href="/gallery"
+                className="text-gray-900 hover:text-[#00629B] py-2"
+              >
+                Gallery
+              </Link>
             </div>
             {/* Mobile Hamburger */}
             <div className="md:hidden">
@@ -527,6 +535,13 @@ const OurTeam = () => {
                 className="block text-gray-900 hover:text-[#00629B]"
               >
                 Activities
+              </Link>
+              <Link
+                href="/gallery"
+                className="block  text-gray-900 hover:text-[#00629B]"
+                onClick={() => setIsOpen(false)}
+              >
+                Gallery
               </Link>
             </div>
           )}
@@ -581,16 +596,18 @@ const OurTeam = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center mb-12 gap-3">
+        <div className="flex flex-wrap justify-center mb-12 gap-2 sm:gap-3">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setSelectedTab(tab)}
-              className={`px-7 py-4 rounded-md text-xl font-medium transition-colors ${
-                selectedTab === tab
-                  ? "bg-[#00629B] text-white shadow-sm"
-                  : "text-gray-700 hover:text-blue-600 hover:bg-white"
-              }`}
+              className={`px-3 py-2 sm:px-5 sm:py-3 lg:px-7 lg:py-4 
+              rounded-md text-sm sm:text-base lg:text-xl font-medium transition-colors
+        ${
+          selectedTab === tab
+            ? "bg-[#00629B] text-white shadow-sm"
+            : "text-gray-700 hover:text-blue-600 hover:bg-white"
+        }`}
             >
               {tab}
             </button>
@@ -598,6 +615,7 @@ const OurTeam = () => {
         </div>
 
         {/* Team Grid */}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {(selectedTab === tabs[0]
             ? teamMembersStudentBranch
@@ -610,12 +628,20 @@ const OurTeam = () => {
             : selectedTab === tabs[4]
             ? teamMembersSensorCouncil
             : teamMembersWIE
-          ).map((member) => {
+          ).map((member, index) => {
             const href = isMobile
-              ? `mailto:${member.email}` // Mobile → opens mail app
-              : `https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`; // Desktop → Gmail web
+              ? `mailto:${member.email}`
+              : `https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`;
+
             return (
-              <div key={member.id} className="text-center">
+              <motion.div
+                key={`${selectedTab}-${member.id}`}
+                className="text-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
                 <div className="mb-4 mt-6">
                   <div className="w-55 h-55 sm:w-55 sm:h-55 lg:w-60 lg:h-60 mx-auto rounded-xl bg-gray-300 flex items-center justify-center overflow-hidden shadow-2xl">
                     {member.image ? (
@@ -629,6 +655,7 @@ const OurTeam = () => {
                     )}
                   </div>
                 </div>
+
                 <p className="font-bold text-[#00629B] mb-3 text-xl sm:text-2xl">
                   {member.name}
                 </p>
@@ -642,7 +669,7 @@ const OurTeam = () => {
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl"
+                      className="flex items-center justify-center w-9 h-9 rounded-sm bg-[#0A66C2] text-white transition-colors text-xl hover:scale-110 transform duration-300"
                     >
                       <RiLinkedinFill className="w-7 h-7" />
                     </a>
@@ -653,7 +680,7 @@ const OurTeam = () => {
                       href={href}
                       target={!isMobile ? "_blank" : undefined}
                       rel={!isMobile ? "noopener noreferrer" : undefined}
-                      className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
+                      className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-110 transform duration-300"
                     >
                       <img
                         src="/assets/mail-icon.webp"
@@ -663,7 +690,7 @@ const OurTeam = () => {
                     </a>
                   )}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

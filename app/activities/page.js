@@ -47,6 +47,12 @@ export default function ActivitiesPage() {
             >
               Activities
             </Link>
+               <Link
+                href="/gallery"
+                className="text-gray-900 hover:text-[#00629B] py-2"
+              >
+                Gallery
+              </Link>
           </div>
 
           {/* Right: Mobile Hamburger */}
@@ -83,6 +89,13 @@ export default function ActivitiesPage() {
               onClick={() => setIsOpen(false)}
             >
               Activities
+            </Link>
+                <Link
+              href="/gallery"
+              className="block  text-gray-900 hover:text-[#00629B]"
+              onClick={() => setIsOpen(false)}
+            >
+              Gallery
             </Link>
           </div>
         )}

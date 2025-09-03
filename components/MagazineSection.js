@@ -2,13 +2,13 @@
 
 import React from "react";
 import { MdOutlineArrowOutward } from "react-icons/md";
-
+import { motion } from "framer-motion";
 const MagazineSection = () => {
   return (
     <section className="mt-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Title */}
       <div className="flex items-center justify-center mb-8">
-        <h1 className="text-center text-5xl sm:text-4xl md:text-5xl"
+        <h1 className="text-center text-4xl sm:text-3xl md:text-5xl"
           style={{ color: "#00629B" }}>
           Magazine
         </h1>
@@ -17,14 +17,24 @@ const MagazineSection = () => {
       {/* Content Layout */}
       <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
         {/* Left: Image */}
-        <img
+        <motion.img
           src="/assets/Magazine.jpg"
           alt="Stellar Panorama"
           className="w-full md:w-1/2 rounded-lg shadow-lg object-cover"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         />
 
         {/* Right: Text */}
-        <div className="w-full md:w-1/2">
+        <motion.div
+          className="w-full md:w-1/2"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-xl sm:text-2xl font-bold mb-4">
             About “STELLAR PANORAMA”
           </h3>
@@ -45,13 +55,15 @@ const MagazineSection = () => {
           </p>
 
           {/* Button */}
-          <button
+          <motion.button
             onClick={() => window.open("/assets/Magazine.pdf")}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="border-2 border-blue-800 text-[#00629B] px-4 py-2 sm:px-6 sm:py-3 rounded-full font-mono hover:bg-blue-950 hover:text-white transition flex items-center gap-2 text-base sm:text-lg md:text-xl"
           >
             VIEW MAGAZINE <MdOutlineArrowOutward />
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

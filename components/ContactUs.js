@@ -35,7 +35,7 @@ const ContactUs = () => {
                 href={
                   isMobile
                     ? "mailto:ieeevssutburlasb@gmail.com" // mobile → open mail app
-                    : "https://mail.google.com/mail/?view=cm&fs=1&to=ieeevssutburlasb@gmail.com" // desktop → Gmail web
+                    : "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com" // desktop → Gmail web
                 }
                 target={!isMobile ? "_blank" : undefined}
                 rel={!isMobile ? "noopener noreferrer" : undefined}

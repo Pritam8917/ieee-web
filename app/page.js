@@ -136,12 +136,6 @@ const HomePage = () => {
       alt: "linkedin",
       type:"linkedin"
     },
-    {
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=ieee.vssut.sb01@gmail.com",
-      src: "/assets/navema.jpg",
-      alt: "email",
-      type: "mail",
-    },
   ];
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -171,24 +165,14 @@ const HomePage = () => {
             ))}
           </div>
           <div className="hidden md:flex gap-5 items-center">
-            {socialItems.map((item) => {
-              const isMail = item.type === "mail"; // 👈 add a property in socialItems for mail
-              const href = isMail
-                ? isMobile
-                  ? `mailto:${item.alt}` // Mobile → open mail app
-                  : item.href // Desktop → Gmail web (or whatever you set in item.href)
-                : item.href; // Normal case for others
-              return (
+            {socialItems.map((item) => (
                 <Link
                   key={item.alt}
-                  href={href}
-                  target={!isMobile && isMail ? "_blank" : undefined}
-                  rel={!isMobile && isMail ? "noopener noreferrer" : undefined}
+                  href={item.href}
                 >
                   <img src={item.src} alt={item.alt} className="w-6 h-6" />
                 </Link>
-              );
-            })}
+            ))}
           </div>
 
           {/* Hamburger Menu (Mobile only) */}

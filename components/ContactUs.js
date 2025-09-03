@@ -40,7 +40,7 @@ const ContactUs = () => {
                 target={!isMobile ? "_blank" : undefined}
                 rel={!isMobile ? "noopener noreferrer" : undefined}
               >
-                ieeevssutburlasb@gmail.com
+               ieee.vssut.sb01@gmail.com
               </Link>
             </span>
           </p>

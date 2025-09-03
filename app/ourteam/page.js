@@ -10,7 +10,8 @@ const OurTeam = () => {
   const [selectedYear, setSelectedYear] = useState("2025 - 2026");
   const [showYearDropdown, setShowYearDropdown] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Student Branch");
-
+  const [isMobile, setIsMobile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const yearOptions = ["2025 - 2026"];
   const tabs = [
     "Student Branch",
@@ -450,8 +451,17 @@ const OurTeam = () => {
       email: "",
     },
   ];
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    // Basic mobile detection
+    if (/android|iPhone|iPad|iPod/i.test(userAgent)) {
+      setIsMobile(true);
+    }
+  }, []);
+  const href = isMobile
+    ? `mailto:${email}` // Mobile → opens mail app
+    : `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`; // Desktop → Gmail web
 
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f8fafc] via-[#e6f2fa] to-[#ffffff]">
       {/* Header */}
@@ -637,9 +647,9 @@ const OurTeam = () => {
 
                 {member.email && (
                   <a
-                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={href}
+                    target={!isMobile ? "_blank" : undefined}
+                    rel={!isMobile ? "noopener noreferrer" : undefined}
                     className="flex items-center justify-center w-9 h-9 rounded-md bg-white shadow-md hover:scale-105 transition-transform"
                   >
                     <img

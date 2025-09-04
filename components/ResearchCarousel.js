@@ -13,7 +13,7 @@ const ResearchCarousel = () => {
     },
     {
       title: "Thermal Imaging of Facial Muscle Activation",
-      description: "",
+      description: "This study used thermal imaging to examine facial temperature changes in highly emotionally intelligent individuals. Participants watched joy and fear videos while 15 facial muscle regions were analyzed. Significant thermal variations were found within emotions, but not between joy and fear.The research shows thermal imaging alone cannot clearly distinguish emotions, highlighting the need for multimodal methods.",
       author: "By Adyasha Pattanayak",
       status: "Published",
        file: "/assets/ResearchPaper2.pdf",

@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "IEEE VSSUT",
+  title: "IEEE VSSUT SB",
   description: "IEEE VSSUT: Shaping Future Engineers",
     icons: {
     icon: "/assets/ieeeicon.png", // path from public folder

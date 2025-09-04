@@ -31,7 +31,7 @@ const OurTeam = () => {
   const teamMembersStudentBranch = [
     {
       id: 1,
-      name: "Harish Kumar Sahu",
+      name: "Harish Kumar Sahoo",
       position: "BRANCH COUNSELOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -139,7 +139,7 @@ const OurTeam = () => {
   const teamMembersCASS = [
     {
       id: 1,
-      name: "Suvendu Narayan",
+      name: "Suvendu Narayan Mishra",
       position: "FACULTY ADVISOR",
       image: "/assets/Suvendu Narayan.jpg",
       linkedin: "",
@@ -208,7 +208,7 @@ const OurTeam = () => {
   const teamMembersCS = [
     {
       id: 1,
-      name: "Harish Kumar Sahu",
+      name: "Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -270,7 +270,7 @@ const OurTeam = () => {
   const teamMembersComSoc = [
     {
       id: 1,
-      name: "Harish Kumar Sahu",
+      name: "Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -331,7 +331,7 @@ const OurTeam = () => {
   const teamMembersSensorCouncil = [
     {
       id: 1,
-      name: "Harish Kumar Sahu",
+      name: "Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -380,11 +380,11 @@ const OurTeam = () => {
     },
     {
       id: 7,
-      name: "Sriya Sahoo",
+      name: "Bibekananda Pradhan",
       position: "WEB MASTER",
-      image: "/assets/sriya sahoo.jpg",
-      linkedin: "#",
-      email: "example@example.com",
+      image: "/assets/Bibekananda Pradhan.jpg",
+      linkedin: "",
+      email: "",
     },
   ];
 

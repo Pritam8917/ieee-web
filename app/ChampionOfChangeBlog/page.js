@@ -174,8 +174,6 @@ export default function ChampionsPage() {
           </h2>
           <div className="w-20 h-1 bg-teal-400 rounded-full mb-4"></div>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li>VSSUT Satellite Launching Vehicle – Student-built rockets</li>
-            <li>Robotics Club Projects – AI-powered robots and drones</li>
             <li>
               Green Tech Initiatives – Sustainable solutions and IoT devices
             </li>

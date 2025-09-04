@@ -382,7 +382,7 @@ const OurTeam = () => {
       id: 7,
       name: "Bibekananda Pradhan",
       position: "WEB MASTER",
-      image: "/assets/Bibekananda Pradhan.jpg",
+      image: "/assets/Bibekananda Pradhan.png",
       linkedin: "",
       email: "",
     },

@@ -8,14 +8,15 @@ const ResearchCarousel = () => {
       description:
         "Study my research paper on Li-Fi Technology using Sustainable Energy which explores how renewable-powered Li-Fi systems enable eco-friendly, high-speed, and reliable wireless communication. The paper highlights potential applications in smart cities, rural connectivity, and green communication networks.",
       author: "By IEEE VSSUT Student Branch Members",
-      status: "published",
+      status: "Published",
       file: "/assets/ResearchPaper1.pdf",
     },
     {
-      title: "AI-Enabled Smart Healthcare Monitoring System",
+      title: "Thermal Imaging of Facial Muscle Activation",
       description: "",
-      author: "By IEEE VSSUT Student Branch Members",
-      status: "inpress",
+      author: "By Adyasha Pattanayak",
+      status: "Published",
+       file: "/assets/ResearchPaper2.pdf",
     },
     {
       title: "Quantum Computing for Next-Gen Encryption",

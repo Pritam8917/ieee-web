@@ -6,7 +6,6 @@ import gsap from "gsap";
 export default function AchievementsTimeline() {
   const achievements = [
     { image: "/assets/Achievements1.jpg" },
-    { image: "/assets/Achievements2.jpg" },
     { image: "/assets/Achievements3.jpg" },
     { image: "/assets/Achievements4.jpg" },
   ];

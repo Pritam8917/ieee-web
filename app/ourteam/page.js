@@ -31,7 +31,7 @@ const OurTeam = () => {
   const teamMembersStudentBranch = [
     {
       id: 1,
-      name: "Harish Kumar Sahoo",
+      name: "Prof. Harish Kumar Sahoo",
       position: "BRANCH COUNSELOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -139,7 +139,7 @@ const OurTeam = () => {
   const teamMembersCASS = [
     {
       id: 1,
-      name: "Suvendu Narayan Mishra",
+      name: "Dr. Suvendu Narayan Mishra",
       position: "FACULTY ADVISOR",
       image: "/assets/Suvendu Narayan.jpg",
       linkedin: "",
@@ -208,7 +208,7 @@ const OurTeam = () => {
   const teamMembersCS = [
     {
       id: 1,
-      name: "Harish Kumar Sahoo",
+      name: "Prof. Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -270,7 +270,7 @@ const OurTeam = () => {
   const teamMembersComSoc = [
     {
       id: 1,
-      name: "Harish Kumar Sahoo",
+      name: "Prof. Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -331,7 +331,7 @@ const OurTeam = () => {
   const teamMembersSensorCouncil = [
     {
       id: 1,
-      name: "Harish Kumar Sahoo",
+      name: " Prof. Harish Kumar Sahoo",
       position: "FACULTY ADVISOR",
       image: "/assets/Harish Kumar Sahu.jpg",
       linkedin:
@@ -392,7 +392,7 @@ const OurTeam = () => {
   const teamMembersWIE = [
     {
       id: 1,
-      name: "Sarmila Garnaik",
+      name: "Mrs. Sarmila Garnaik",
       position: "FACULTY ADVISOR",
       image: "/assets/Sarmila Garnaik.jpg",
       linkedin: "",

@@ -89,30 +89,6 @@ export default function ChampionsPage() {
           </p>
         </motion.div>
 
-        {/* Section 3 */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-white rounded-2xl shadow-md p-10 hover:shadow-xl transition-shadow"
-        >
-          <h2 className="text-3xl md:text-3xl font-semibold text-blue-900 mb-3">
-            Space, Sustainability & Beyond
-          </h2>
-          <div className="w-20 h-1 bg-teal-400 rounded-full mb-4"></div>
-          <p className="text-gray-700 leading-relaxed mb-2">
-            VSSUT doesn't wish big—it launches big. The VSSUT Satellite
-            Launching Vehicle is a student initiative to develop and launch
-            native rockets and small satellites.
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            From Solution Challenge Hackathons dedicated to UN SDGs to green
-            tech applications, IEEE VSSUT Student Branch paves the way for a
-            responsible and inclusive future.
-          </p>
-        </motion.div>
-
         {/* Section 4 */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
